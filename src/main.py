@@ -58,8 +58,7 @@ def generate_page(src, dst, template):
     content = shared.markdown_to_html_node(md_file).to_html()
 
     page = template.replace("{{ Title }}", title).replace("{{ Content }}", content)
-    page = page.replace("href=\"", title).replace(f"href=\"{BASEPATH}", content)
-    page = page.replace("src=\"", title).replace(f"src=\"{BASEPATH}", content)
+    page = page.replace("href=/\"", f"href=\"{BASEPATH}").replace("src=/\"", f"src=\"{BASEPATH}")
 
     with open(dst, "x") as f:
         f.write(page)
