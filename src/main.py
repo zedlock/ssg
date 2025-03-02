@@ -10,19 +10,19 @@ def main():
     else:
         BASEPATH = sys.argv[1]
     cwd = os.getcwd()
-    if os.path.exists(f"{cwd}/public"):
-        shutil.rmtree(f"{cwd}/public")
+    if os.path.exists(f"{cwd}/docs"):
+        shutil.rmtree(f"{cwd}/docs")
 
     copy_static(cwd)
 
     generate_page_recursive(
         f"{cwd}/content",
-        f"{cwd}/public",
+        f"{cwd}/docs",
         f"{cwd}/template.html",
     )
 
 def copy_static(cwd):
-    copy(f"{cwd}/static", f"{cwd}/public")
+    copy(f"{cwd}/static", f"{cwd}/docs")
 
 def copy(src, dst):
     if os.path.isfile(src):
